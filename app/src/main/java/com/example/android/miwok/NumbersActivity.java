@@ -21,14 +21,7 @@ import static android.media.CamcorderProfile.get;
 public class NumbersActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
-    private MediaPlayer.OnCompletionListener onComplet= new MediaPlayer.OnCompletionListener(){
 
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            releaseMediaPlayer();
-        }
-
-    };
     private AudioManager audioManager;
     AudioManager.OnAudioFocusChangeListener audioFocusChangeListener =
             new AudioManager.OnAudioFocusChangeListener() {
@@ -70,7 +63,7 @@ public class NumbersActivity extends AppCompatActivity {
 
         WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_numbers);
 
-        final ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(R.id.list);
 
         listView.setAdapter(itemsAdapter);
 
@@ -95,19 +88,28 @@ public class NumbersActivity extends AppCompatActivity {
                     //Clean up the media player by releasing its resources.
                     mediaPlayer.setOnCompletionListener(onComplet);
                 }
-                Toast.makeText(NumbersActivity.this,
-                        "play word",
-                        Toast.LENGTH_SHORT)
-                        .show();
+//                Toast.makeText(NumbersActivity.this,
+//                        "play word",
+//                        Toast.LENGTH_SHORT)
+//                        .show();
             }
         });
 
     }
+
     @Override
     protected void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }
+    private MediaPlayer.OnCompletionListener onComplet= new MediaPlayer.OnCompletionListener(){
+
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            releaseMediaPlayer();
+        }
+
+    };
     private void releaseMediaPlayer() {
         // If the media player is not null, then it may be currently playing a sound.
         if (mediaPlayer != null) {

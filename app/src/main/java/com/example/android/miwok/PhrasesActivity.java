@@ -89,10 +89,10 @@ public class PhrasesActivity extends AppCompatActivity {
                     //Clean up the media player by releasing its resources.
                     mediaPlayer.setOnCompletionListener(onComplet);
                 }
-                Toast.makeText(PhrasesActivity.this,
-                        "play word",
-                        Toast.LENGTH_SHORT)
-                        .show();
+//                Toast.makeText(PhrasesActivity.this,
+//                        "play word",
+//                        Toast.LENGTH_SHORT)
+//                        .show();
             }
         });
 
@@ -113,6 +113,7 @@ public class PhrasesActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mediaPlayer = null;
+            audioManager.abandonAudioFocus(audioFocusChangeListener);
         }
     }
 }
