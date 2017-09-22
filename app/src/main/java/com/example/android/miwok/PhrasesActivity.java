@@ -45,6 +45,7 @@ public class PhrasesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.word_list);
         //create audio manager to request audio focus
         audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);

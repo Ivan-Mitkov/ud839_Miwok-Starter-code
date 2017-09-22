@@ -45,6 +45,7 @@ public class FamilyMembersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.word_list);
 
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
